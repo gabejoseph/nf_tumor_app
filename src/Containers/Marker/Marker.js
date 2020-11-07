@@ -2,26 +2,31 @@ import React, { Component } from 'react'
 
 import {connect} from 'react-redux';
 
+import { changeMarkerMenu, cleanupMarker} from '../../Redux/Actions/marker'
+import AddMarker from './AddMarker';
+
 import './Marker.css'
 import MarkerList from './MarkerList';
 
 class Marker extends Component {
+
+    componentWillUnmount(){
+        this.props.cleanup();
+    }
+
     render() {
         return (
             <div className='Marker'>
                 Marker 
 
-                Show Markers
-
                 <div className='Marker-toggleMenu'>
-                    <div className='Marker-toggleMenuItem'>Show</div>
-                    <div className='Marker-toggleMenuItem'>Add</div>
+                    <div className='Marker-toggleMenuItem' onClick={() => this.props.renderView(1)}>Show</div>
+                    <div className='Marker-toggleMenuItem' onClick={() => this.props.renderView(2)}>Add</div>
                 </div>
                 
-                < MarkerList />
+                {this.props.currentView === 1 ? < MarkerList /> : < AddMarker /> }
                 
-                Add Marker
-
+                
             </div>
         )
     }
@@ -29,13 +34,14 @@ class Marker extends Component {
 
 const mapStateToProps = (state) => {
     return {
-
+        currentView: state.marker.viewState
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
+        cleanup: () => {dispatch(cleanupMarker())},
+        renderView: (viewId) => {dispatch(changeMarkerMenu(viewId))}
     }
 }
 

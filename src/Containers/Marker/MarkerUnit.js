@@ -2,15 +2,18 @@ import React, { Component } from 'react'
 
 import {connect} from 'react-redux';
 
+import EditButton from '../../Components/EditButton/EditButton'
+import DeleteButton from '../../Components/DeleteButton/DeleteButton'
+
 import './Marker.css'
 
 class MarkerUnit extends Component {
     render() {
         return (
-            <div>
+            <div className='MarkerUnit'>
                 MarkerUnit
-                Edit
-                Delete
+                < EditButton />
+                < DeleteButton />
             </div>
         )
     }
