@@ -1,0 +1,21 @@
+div.Navbar{
+    height: 2.5rem;
+    width: 100vw;
+    background-color: rgb(89, 50, 197);
+
+}
+
+ul.Navbar-Menu {
+    line-height: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li.Navbar-MenuItem {
+    list-style: none;
+}
+
+li.Navbar-MenuItem a{
+    text-decoration: none;
+    color: white;
+}

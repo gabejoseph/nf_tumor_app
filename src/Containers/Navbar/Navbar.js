@@ -2,13 +2,20 @@ import React, { Component } from 'react'
 
 import {connect} from 'react-redux';
 
+import {Link} from 'react-router-dom';
+
 import './Navbar.css'
 
 class Navbar extends Component {
     render() {
         return (
-            <div>
-                Navbar
+            <div className='Navbar'>
+                <ul className='Navbar-Menu'>
+                    <li className='Navbar-MenuItem'><Link to='/events'>Events</Link></li>
+                    <li className='Navbar-MenuItem'><Link to='/markers'>Markers</Link></li>
+                </ul>
+                
+                
             </div>
         )
     }
