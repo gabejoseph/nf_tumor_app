@@ -17,5 +17,10 @@ li.Navbar-MenuItem {
 
 li.Navbar-MenuItem a{
     text-decoration: none;
-    color: white;
+    color: whitesmoke;
+}
+
+li.Navbar-MenuItem a:hover{
+    font-weight: bold;
+    /* text-decoration: underline; */
 }
