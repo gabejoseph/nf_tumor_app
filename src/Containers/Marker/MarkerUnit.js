@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 
 import {connect} from 'react-redux';
 
-import EditButton from '../../Components/EditButton/EditButton'
-import DeleteButton from '../../Components/DeleteButton/DeleteButton'
+import ButtonMenu from '../../Components/ButtonMenu/ButtonMenu'
 
 import './Marker.css'
 
@@ -12,8 +11,9 @@ class MarkerUnit extends Component {
         return (
             <div className='MarkerUnit'>
                 MarkerUnit
-                < EditButton />
-                < DeleteButton />
+
+                <ButtonMenu /> 
+             
             </div>
         )
     }

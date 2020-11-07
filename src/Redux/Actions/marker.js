@@ -1,4 +1,4 @@
-import { ADD_MARKER, CLEANUP_MARKER, CHANGE_MARKER_MENU, CHANGE_MARKER_LOCATION } from "./type.js";
+import { ADD_MARKER, CLEANUP_MARKER, CHANGE_MARKER_MENU, CHANGE_MARKER_LOCATION, CHANGE_MARKER_TYPE } from "./type.js";
 
 function addMarker() {
   return {
@@ -16,6 +16,13 @@ function changeMarkerMenu(view) {
 function changeMarkerLocation(e) {
   return {
     type: CHANGE_MARKER_LOCATION,
+    payload: {[e.target.name]: e.target.value}
+  };
+}
+
+function changeMarkerType(e) {
+  return {
+    type: CHANGE_MARKER_TYPE,
     payload: {[e.target.name]: e.target.value}
   };
 }
@@ -44,4 +51,4 @@ function cleanupMarker() {
   };
 }
 
-export { addMarker, changeMarkerMenu, changeMarkerLocation, submitNewMarker, cleanupMarker };
+export { addMarker, changeMarkerMenu, changeMarkerLocation, changeMarkerType, submitNewMarker, cleanupMarker };
