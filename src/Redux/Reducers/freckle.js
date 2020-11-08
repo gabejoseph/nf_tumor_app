@@ -8,7 +8,15 @@ const initialState = {
 const reducer = (oldState = initialState, action) => {
     switch(action.type){
         case ADD_FRECKLE_COUNT:
-            return {}
+            // validate freckle count and type cast to String > Int
+            if (action.payload.freckleCount !== undefined) {
+                if (parseInt(action.payload.freckleCount) < 0) {
+                action.payload.freckleCount = 0;
+                } else {
+                    action.payload.freckleCount = parseInt(action.payload.freckleCount);
+                }
+            }
+            return {...oldState, ...action.payload}
         case CLEANUP_FRECKLE:
             return initialState;
         default:

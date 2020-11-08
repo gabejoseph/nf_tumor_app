@@ -1,8 +1,9 @@
 import { ADD_FRECKLE_COUNT, CLEANUP_FRECKLE } from "./type.js";
 
-function addFreckleCount() {
+function addFreckleCount(e) {
   return {
     type: ADD_FRECKLE_COUNT,
+    payload: {[e.target.name]: e.target.value}
   };
 }
 

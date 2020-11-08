@@ -18,8 +18,6 @@ class TypeofMarker extends Component {
         return (
             <div>
                 {this.renderView(this.props.detailMenuType)}
-                SHow Type detail input menu for {this.props.detailMenuType}
-
             </div>
         )
     }

@@ -2,29 +2,35 @@ import React, { Component } from 'react'
 
 import {connect} from 'react-redux';
 
+import { changeTumorDimensions, cleanupTumor } from '../../Redux/Actions/tumor'
 
 import './Marker.css'
 
 class Tumor extends Component {
+
+    componentWillUnmount() {
+        this.props.cleanup();
+    }
+
     render() {
         return (
             <div className='Tumor'>
                 Tumor
-                <form onSubmit={(e) => this.props.handleSubmitMarker(e, this.props.markerCoords) } >
-                    <div className='Marker-Location'>
-                        <p><strong>Dimensions</strong></p>
-                        <label>
-                            Diameter
-                        </label>
-                        <input name='diameter' type='number' value={this.props.diameter} onChange={this.props.handleChangeLocation}/>
-                        <br />
-                        <label>
-                            Weight
-                        </label>
-                        <input name='weight' type='number' value={this.props.weight} onChange={this.props.handleChangeLocation}/>
-                    </div>
-                    < br />
-                </form>
+                
+                <div className='Marker-Location'>
+                    <p><strong>Dimensions</strong></p>
+                    <label>
+                        Diameter (mm)
+                    </label>
+                    <input name='diameter' type='number' value={this.props.diameter} onChange={(e) => this.props.handleChangeDimensions(e)} />
+                    <br />
+                    <label>
+                        Weight (g)
+                    </label>
+                    <input name='weight' type='number' value={this.props.weight} onChange={(e) => this.props.handleChangeDimensions(e)} />
+                </div>
+                < br />
+
             </div>
         )
     }
@@ -39,6 +45,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        handleChangeDimensions: (e) => {dispatch(changeTumorDimensions(e))},
+        cleanup: () => {dispatch(cleanupTumor())}
     }
 }
 

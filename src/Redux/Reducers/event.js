@@ -1,4 +1,4 @@
-import { CLEANUP_EVENT, CHANGE_EVENT_INFO, SUBMIT_EVENT } from "../Actions/type.js";
+import { CLEANUP_EVENT, CHANGE_EVENT_INFO } from "../Actions/type.js";
 
 const initialState = {
     eventType: "1",

@@ -2,27 +2,29 @@ import React, { Component } from 'react'
 
 import {connect} from 'react-redux';
 
+import { addFreckleCount, cleanupFreckle }from '../../Redux/Actions/freckle'
 
 import './Marker.css'
 
 class Freckle extends Component {
+
+    componentWillUnmount(){
+        this.props.cleanup();
+    }
+
     render() {
         return (
             <div className='Freckle'>
-                Freckle
-                <form onSubmit={(e) => this.props.handleSubmitMarker(e, this.props.markerCoords) } >
+               
                     <div className='Freckle-Count'>
                         <p><strong>Location</strong></p>
                         <label>
                             Number of Freckles
                         </label>
-                        <input name='freckleCount' type='number' value={this.props.freckles} onChange={this.props.handleChangeLocation}/>
+                        <input name='freckleCount' type='number' value={this.props.freckles} onChange={this.props.changeFreckleCount}/>
                                           
                     </div>
-                    < br />
-                    
-                    <input type='submit' />
-                </form>
+                  
             </div>
         )
     }
@@ -36,6 +38,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        cleanup: () => {dispatch(cleanupFreckle())},
+        changeFreckleCount: (e) => {dispatch(addFreckleCount(e))}
     }
 }
 

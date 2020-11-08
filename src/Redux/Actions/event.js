@@ -1,4 +1,4 @@
-import { CLEANUP_EVENT, CHANGE_EVENT_INFO, SUBMIT_EVENT } from "./type.js";
+import { CLEANUP_EVENT, CHANGE_EVENT_INFO } from "./type.js";
 
 function changeEventInfo(e){
   return {
