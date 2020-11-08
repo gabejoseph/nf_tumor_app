@@ -1,15 +1,25 @@
-import { NEW_IMAGE_TO_STORE, CLEAR_IMAGE_STORE } from "./type.js";
+import { CLEANUP_EVENT, CHANGE_EVENT_INFO, SUBMIT_EVENT } from "./type.js";
 
-function addEvent() {
+function changeEventInfo(e){
   return {
-    type: NEW_IMAGE_TO_STORE,
-  };
+    type: CHANGE_EVENT_INFO,
+    payload: {[e.target.name]: e.target.value}
+  }
+}
+
+function submitEvent(e){
+  e.preventDefault();
+  return (dispatch) => {
+    fetch()
+    .then()
+    .then()
+  }
 }
 
 function cleanupEvent() {
   return {
-    type: CLEAR_IMAGE_STORE,
+    type: CLEANUP_EVENT,
   };
 }
 
-export { addEvent, cleanupEvent };
+export { changeEventInfo, submitEvent, cleanupEvent };

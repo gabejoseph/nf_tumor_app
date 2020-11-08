@@ -1,15 +1,20 @@
-import { NEW_IMAGE_TO_STORE, CLEAR_IMAGE_STORE } from "../Actions/type.js";
+import { CLEANUP_EVENT, CHANGE_EVENT_INFO, SUBMIT_EVENT } from "../Actions/type.js";
 
 const initialState = {
-
+    eventType: "1",
+    eventIntensity: 1,
+    eventDescription: ""
 }
 
 
 const reducer = (oldState = initialState, action) => {
     switch(action.type){
-        case NEW_IMAGE_TO_STORE:
-            return {}
-        case CLEAR_IMAGE_STORE:
+        case CHANGE_EVENT_INFO:
+            if (action.payload.eventIntensity !== undefined) {
+                action.payload.eventIntensity = parseInt(action.payload.eventIntensity);
+            }
+            return {...oldState, ...action.payload}
+        case CLEANUP_EVENT:
             return initialState;
         default:
             return oldState;

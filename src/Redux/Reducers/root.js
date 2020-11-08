@@ -4,7 +4,8 @@ import event from './event.js';
 import marker from './marker.js';
 import tumor from './tumor.js';
 import freckle from './freckle.js';
+import bodyLocation from './bodyLocation.js';
 
 export default combineReducers({
-    event, marker, tumor, freckle
+    event, marker, tumor, freckle, bodyLocation
 })
