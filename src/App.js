@@ -9,19 +9,20 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import Event from "./Containers/Event/Event";
 import Navbar from "./Containers/Navbar/Navbar";
 import Marker from "./Containers/Marker/Marker";
+import Main from "./Containers/Main/Main";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        < Navbar />
-       
+
         <Switch>
           {/* <ProtectedRoute
             isAuth={this.props.isAuth}
             path="/event"
             component={Event}
           /> */}
+          < Route path='/welcome' component={Main} />
           < Route path='/events' component={Event} />
           < Route path='/markers' component={Marker} />
         </Switch>

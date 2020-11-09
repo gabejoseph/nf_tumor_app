@@ -10,9 +10,14 @@ class Navbar extends Component {
     render() {
         return (
             <div className='Navbar'>
+
+               <div id='MenuItem-Event' className='Navbar-CTAItem'><Link to='/events'>Log Today's Entry</Link></div>
                 <ul className='Navbar-Menu'>
-                    <li className='Navbar-MenuItem'><Link to='/events'>Events</Link></li>
-                    <li className='Navbar-MenuItem'><Link to='/markers'>Markers</Link></li>
+                  
+                    <li id='MenuItem-History' className='Navbar-MenuItem'><Link to='/events'>History</Link></li>
+                    <li id='MenuItem-Messages' className='Navbar-MenuItem'><Link to='/events'>Messages</Link></li>
+                    <li id='MenuItem-Setting' className='Navbar-MenuItem'><Link to='/markers'>Settings</Link></li>
+                    <li id='MenuItem-Export' className='Navbar-MenuItem'><Link to='/events'>Export</Link></li>
                 </ul>
             </div>
         )
