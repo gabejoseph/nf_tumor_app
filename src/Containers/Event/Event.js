@@ -17,8 +17,9 @@ class Event extends Component {
         return (
             <div className='Event'>
                 Event
+                < br />
 
-                <form onSubmit={(e)=>this.props.handleSubmitEventType(e)}>
+                <form className='Event-Form' id='event-submit-form' onSubmit={(e)=>this.props.handleSubmitEventType(e)}>
                
                 <div> 
 
@@ -33,11 +34,11 @@ class Event extends Component {
                     </select>
 
                 </div>
-                <div> body location 
+                <br />
 
-                    < BodyLocation />
+                < BodyLocation />
 
-                </div>
+                < br />
                 <div>  
                     <label> Intensity </label>
                     <select name="eventIntensity" onChange={(e)=> this.props.handleChangeEventInfo(e)}>
@@ -53,11 +54,14 @@ class Event extends Component {
                         <option value={10}>10</option>
                     </select>
                 </div>
-
-                <div> Event Description 
-                    <label> Describe your pain: </label>
+                < br />
+                <div className='Event-Description'> 
+                    <label> Describe your event: </label>
+                    < br />
                     <textarea cols='50' rows='5' name='eventDescription' value={this.props.description} onChange={(e) => this.props.handleChangeEventInfo(e)} />
                 </div>
+
+                < button type='submit' form='event-submit-form' value='submit'>Submit</button>
 
                 </form>
             </div>

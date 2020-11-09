@@ -7,7 +7,7 @@ import { changeBodyLocation, cleanupLocation } from '../../Redux/Actions/bodyLoc
 
 import './BodyLocation.css'
 
-class AddMarker extends Component {
+class BodyLocation extends Component {
     componentWillUnmount(){
         this.props.cleanup();
     }
@@ -15,7 +15,7 @@ class AddMarker extends Component {
     render() {
         return (
     
-            <div className='Marker-Location'>
+            <div className='BodyLocation-Location'>
                 <p><strong>Location</strong></p>
                 <label> Section </label>
                 <input name='section' type='number' value={this.props.section} onChange={this.props.handleChangeLocation}/>
@@ -43,4 +43,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddMarker);
+export default connect(mapStateToProps, mapDispatchToProps)(BodyLocation);

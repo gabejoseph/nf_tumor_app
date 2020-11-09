@@ -7,3 +7,13 @@ div.Event {
     justify-content: center;
     align-items: center;
 }
+
+form.Event-Form {
+    margin: auto;
+    width: 100vw;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

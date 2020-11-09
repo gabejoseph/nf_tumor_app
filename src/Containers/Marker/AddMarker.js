@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import {connect} from 'react-redux';
 
-import { changeMarkerType, submitNewMarker } from '../../Redux/Actions/marker'
+import { changeMarkerType, submitMarker } from '../../Redux/Actions/marker'
 
 import TypeofMarker from './TypeofMarker';
 
@@ -54,7 +54,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         handleChangeType: (e) => {dispatch(changeMarkerType(e))},
-        handleSubmitMarker: (e, coords) => {dispatch(submitNewMarker(e, coords))}
+        handleSubmitMarker: (e, coords) => {dispatch(submitMarker(e, coords))}
     }
 }
 
