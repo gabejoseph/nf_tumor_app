@@ -15,7 +15,7 @@ class Event extends Component {
     
     render() {
         return (
-            <div>
+            <div className='Event'>
                 Event
 
                 <form onSubmit={(e)=>this.props.handleSubmitEventType(e)}>
