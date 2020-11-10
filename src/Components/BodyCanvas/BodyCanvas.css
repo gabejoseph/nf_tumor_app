@@ -1,0 +1,11 @@
+div.BodyCanvas {
+    background-color: rgb(253, 140, 10);
+
+}
+
+div.BodyCanvas canvas {
+
+    border: 1px solid gray;
+    width: 300px;
+    height: 600px;
+}

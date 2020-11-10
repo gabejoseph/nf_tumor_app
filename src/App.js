@@ -7,9 +7,9 @@ import { connect } from "react-redux";
 
 import ProtectedRoute from "./Components/ProtectedRoute";
 import Event from "./Containers/Event/Event";
-import Navbar from "./Containers/Navbar/Navbar";
 import Marker from "./Containers/Marker/Marker";
 import Main from "./Containers/Main/Main";
+import BodyCanvas from "./Components/BodyCanvas/BodyCanvas";
 
 class App extends Component {
   render() {
@@ -25,6 +25,7 @@ class App extends Component {
           < Route path='/welcome' component={Main} />
           < Route path='/events' component={Event} />
           < Route path='/markers' component={Marker} />
+          < Route path='/canvas' component={BodyCanvas} />
         </Switch>
       </div>
     );
