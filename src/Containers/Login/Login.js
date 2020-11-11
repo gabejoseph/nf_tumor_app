@@ -4,14 +4,11 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
-import { userActions } from '../actions/user.actions';
-
 class Login extends React.Component {
     constructor(props) {
         super(props);
 
         // reset login status
-        this.props.logout();
 
         this.state = {
             username: '',
@@ -60,7 +57,6 @@ class Login extends React.Component {
                     </div>
                     <div className="form-group">
                         <button className="btn btn-primary">Login</button>
-                        {loggingIn}
                         <Button><Link to="/register" className="btn btn-link">Register</Link></Button>
                     </div>
                 </form>
@@ -69,14 +65,5 @@ class Login extends React.Component {
     }
 }
 
-function mapState(state) {
-    const { loggingIn } = state.authentication;
-    return { loggingIn };
-}
 
-const actionCreators = {
-    login: userActions.login,
-    logout: userActions.logout
-};
-
-export default connect(mapState, actionCreators)(Login);
+export default connect(null)(Login);

@@ -10,6 +10,8 @@ import Event from "./Containers/Event/Event";
 import Navbar from "./Containers/Navbar/Navbar";
 import Marker from "./Containers/Marker/Marker";
 import Home from './Containers/Home/Home'
+import Login from './Containers/Login/Login'
+import Register from './Containers/Register/Register'
 
 class App extends Component {
   render() {
@@ -25,8 +27,8 @@ class App extends Component {
           /> */}
           <Route path='/events' component={Event} />
           <Route path='/markers' component={Marker} />
-          {/* <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} /> */}
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
           <Route path="/" component={Home} />
         </Switch>
       </div>
