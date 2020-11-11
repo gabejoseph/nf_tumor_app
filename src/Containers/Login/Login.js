@@ -11,7 +11,7 @@ class Login extends React.Component {
         // reset login status
 
         this.state = {
-            username: '',
+            email: '',
             password: '',
             submitted: false
         };
@@ -38,15 +38,15 @@ class Login extends React.Component {
 
     render() {
         const { loggingIn } = this.props;
-        const { username, password, submitted } = this.state;
+        const { email, password, submitted } = this.state;
         return (
             <div>
                 <h2>Login</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
-                    <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>
-                        <TextField type="text" label="Username" htmlFor="username" className="form-control" name="username" value={username} onChange={this.handleChange} />
-                        {submitted && !username &&
-                            <div className="help-block">Username is required</div>
+                    <div className={'form-group' + (submitted && !email ? ' has-error' : '')}>
+                        <TextField type="text" label="Email" htmlFor="email" className="form-control" name="email" value={email} onChange={this.handleChange} />
+                        {submitted && !email &&
+                            <div className="help-block">Email is required</div>
                         }
                     </div>
                     <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
