@@ -11,6 +11,7 @@ class Navbar extends Component {
         return (
             <div className='Navbar'>
                 <ul className='Navbar-Menu'>
+                    <li className='Navbar-MenuItem'><Link to='/'>Home</Link></li>
                     <li className='Navbar-MenuItem'><Link to='/events'>Events</Link></li>
                     <li className='Navbar-MenuItem'><Link to='/markers'>Markers</Link></li>
                 </ul>
