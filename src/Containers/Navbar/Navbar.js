@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 
 import {Link} from 'react-router-dom';
+import SimpleMenu from '../Menu/SimpleMenu';
 
 import './Navbar.css'
 
@@ -14,6 +15,7 @@ class Navbar extends Component {
                     <li className='Navbar-MenuItem'><Link to='/'>Home</Link></li>
                     <li className='Navbar-MenuItem'><Link to='/events'>Events</Link></li>
                     <li className='Navbar-MenuItem'><Link to='/markers'>Markers</Link></li>
+                    <li className='Navbar-MenuItem'><SimpleMenu /></li>
                 </ul>
             </div>
         )
