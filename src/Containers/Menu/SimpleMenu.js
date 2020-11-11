@@ -34,7 +34,7 @@ class SimpleMenu extends React.Component {
   };
 
   handleLogout() {
-    this.props.logout();
+    localStorage.removeItem('user');
     this.handleClose();
   }
 

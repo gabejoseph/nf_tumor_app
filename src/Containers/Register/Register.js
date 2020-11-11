@@ -39,9 +39,10 @@ class Register extends React.Component {
         this.setState({ submitted: true });
         const { user } = this.state;
         // user.name user.email user.username user.password
+        console.log(user)
         if (user.name && user.email && user.username && user.password) {
-            this.props.register(user);
-            this.props.login(user.username, user.password);
+            register(user);
+            login(user.email, user.password);
             this.props.history.push('/');
         }
     }
@@ -93,3 +94,65 @@ class Register extends React.Component {
 }
 
 export default connect(null)(Register);
+
+function register(user) {
+    const BASE_URL = "https://nf-tumor-backend.herokuapp.com"
+    // const BASE_URL = "http://localhost:4000"
+
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    };
+
+    return fetch(`${BASE_URL}/registrations`, requestOptions).then(handleResponse);
+}
+
+function login(email, password) {
+    const BASE_URL = "https://nf-tumor-backend.herokuapp.com"
+    // const BASE_URL = "http://localhost:4000"
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+    };
+
+    return fetch(`${BASE_URL}/sessions`, requestOptions)
+        .then(handleResponse)
+        .then(user => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('user', JSON.stringify(user));
+
+            return user;
+        });
+}
+
+function logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('user');
+}
+
+function handleResponse(response) {
+    return response.text().then(text => {
+        const data = text && JSON.parse(text);
+        if (!response.ok) {
+            if (response.status === 401) {
+                // auto logout if 401 response returned from api
+                logout();
+                // location.reload(true);
+            }
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+        }
+        console.log(data)
+        return data;
+    });
+}

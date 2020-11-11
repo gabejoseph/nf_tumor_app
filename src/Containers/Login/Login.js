@@ -29,9 +29,9 @@ class Login extends React.Component {
         e.preventDefault();
 
         this.setState({ submitted: true });
-        const { username, password } = this.state;
-        if (username && password) {
-            this.props.login(username, password);
+        const { email, password } = this.state;
+        if (email && password) {
+            login(email, password);
             this.props.history.push('/')
         }
     }
@@ -67,3 +67,49 @@ class Login extends React.Component {
 
 
 export default connect(null)(Login);
+
+function login(email, password) {
+    const BASE_URL = "https://nf-tumor-backend.herokuapp.com"
+    // const BASE_URL = "http://localhost:4000"
+
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+    };
+
+    return fetch(`${BASE_URL}/sessions`, requestOptions)
+        .then(handleResponse)
+        .then(user => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('user', JSON.stringify(user));
+            window.location.reload();
+            return user;
+        });
+}
+
+function logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('user');
+}
+
+function handleResponse(response) {
+    return response.text().then(text => {
+        const data = text && JSON.parse(text);
+        if (!response.ok) {
+            if (response.status === 401) {
+                // auto logout if 401 response returned from api
+                logout();
+                // location.reload(true);
+            }
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+        }
+        return data;
+        console.log(data);
+    });
+}
