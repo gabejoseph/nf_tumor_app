@@ -7,9 +7,10 @@ import { connect } from "react-redux";
 
 import ProtectedRoute from "./Components/ProtectedRoute";
 import Event from "./Containers/Event/Event";
+import History from "./Containers/History/History";
 import Marker from "./Containers/Marker/Marker";
 import Main from "./Containers/Main/Main";
-import BodyCanvas from "./Components/BodyCanvas/BodyCanvas";
+import Diary from "./Containers/Diary/Diary";
 
 class App extends Component {
   render() {
@@ -24,8 +25,9 @@ class App extends Component {
           /> */}
           < Route path='/welcome' component={Main} />
           < Route path='/events' component={Event} />
+          < Route path='/patientlog' component={History} />
           < Route path='/markers' component={Marker} />
-          < Route path='/canvas' component={BodyCanvas} />
+          < Route path='/message' component={Diary} />
         </Switch>
       </div>
     );

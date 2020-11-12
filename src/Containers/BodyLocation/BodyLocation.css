@@ -4,7 +4,6 @@ div.BodyLocation-Location {
     flex-direction: column;
     justify-content: center;
     width: 300px;
-    border: 1px  rgb(83, 177, 145) solid;
     border-radius: 3px;
     padding: 1rem 0 1rem 0;
 }

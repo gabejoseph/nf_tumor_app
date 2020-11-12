@@ -1,4 +1,4 @@
-import {  CLEANUP_LOCATION, CHANGE_BODY_LOCATION } from "./type.js";
+import {  CLEANUP_LOCATION, CHANGE_BODY_LOCATION, ADD_BODY_LOCATION } from "./type.js";
 
 function changeBodyLocation(e) {
   return {
@@ -7,6 +7,12 @@ function changeBodyLocation(e) {
   };
 }
 
+function addBodyLocation(coord){
+  return {
+    type: ADD_BODY_LOCATION,
+    payload: coord
+  }
+}
 
 function cleanupLocation() {
   return {
@@ -14,4 +20,4 @@ function cleanupLocation() {
   };
 }
 
-export { changeBodyLocation, cleanupLocation };
+export { changeBodyLocation, cleanupLocation, addBodyLocation };

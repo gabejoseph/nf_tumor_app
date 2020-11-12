@@ -6,7 +6,7 @@ class DeleteButton extends Component {
     render() {
         return (
             <div className='DeleteButton'>
-                <p>Delete</p>
+                {this.props.text}
             </div>
         )
     }
