@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Tumor from './Tumor';
+import Tumor from './Dimensions';
 import Freckle from './Freckle';
 
 class TypeofMarker extends Component {

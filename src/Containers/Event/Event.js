@@ -5,17 +5,28 @@ import {connect} from 'react-redux';
 import {changeEventInfo, submitEvent, cleanupEvent} from '../../Redux/Actions/event'
 
 import Banner from '../Banner/Banner'
-import BodyCanvas from '../../Components/BodyCanvas/BodyCanvas'
+import Pain from './EventTemplates/Pain'
 
 import './Event.css'
 import TypeMenu from './TypeMenu';
-import DurationMenu from './DurationMenu';
-import Intensity from './Intensity';
+import Marker from './EventTemplates/Marker';
+
 
 class Event extends Component {
     
     componentWillUnmount(){
         this.props.cleanup();
+    }
+
+    renderEvent(type){
+        switch(type){
+            case "Pain":
+                return < Pain />;
+            case "New Mark":
+                return < Marker />;
+            default:
+                return null;
+        }
     }
     
     render() {
@@ -31,7 +42,9 @@ class Event extends Component {
 
                 <br />
 
-                <div className='Event-Text'>Where have you experienced this?</div>
+                { this.renderEvent(this.props.activeType) }              
+
+                {/* <div className='Event-Text'>Where have you experienced this?</div>
 
                 < BodyCanvas />
 
@@ -53,7 +66,7 @@ class Event extends Component {
                     <label> Additional notes (optional): </label>
                     < br />
                     <textarea cols='50' rows='5' name='eventDescription' value={this.props.description} onChange={(e) => this.props.handleChangeEventInfo(e)} />
-                </div>
+                </div> */}
 
                 < button type='submit' form='event-submit-form' value='submit'>Submit Log</button>
 
@@ -65,6 +78,7 @@ class Event extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        activeType: state.event.eventType,
         description: state.event.eventDescription
     }
 }
