@@ -1,9 +1,24 @@
-import { CLEANUP_EVENT, CHANGE_EVENT_INFO, POST_EVENT_SUCCESS, POST_EVENT_FAILURE, GET_EVENT_SUCCESS, GET_EVENT_FAILURE } from "./type.js";
+import { CLEANUP_EVENT, CHANGE_INTENSITY, CHANGE_EVENT_TYPE, CHANGE_DURATION_TYPE, POST_EVENT_SUCCESS, POST_EVENT_FAILURE, GET_EVENT_SUCCESS, GET_EVENT_FAILURE } from "./type.js";
 
-function changeEventInfo(e){
+function changeEventInfo(intensityValue){
+  
   return {
-    type: CHANGE_EVENT_INFO,
-    payload: {[e.target.name]: e.target.value}
+    type: CHANGE_INTENSITY,
+    payload: intensityValue
+  }
+}
+
+function changeEventType(type){
+  return {
+    type: CHANGE_EVENT_TYPE,
+    payload: type
+  }
+}
+
+function changeDurationType(type){
+  return {
+    type: CHANGE_DURATION_TYPE,
+    payload: type
   }
 }
 
@@ -83,4 +98,4 @@ function cleanupEvent() {
   };
 }
 
-export { changeEventInfo, submitEvent, getEvents, cleanupEvent };
+export { changeEventInfo, changeEventType, changeDurationType, submitEvent, getEvents, cleanupEvent };

@@ -1,8 +1,9 @@
-import {  CLEANUP_LOCATION, CHANGE_BODY_LOCATION } from '../Actions/type'
+import {  CLEANUP_LOCATION, CHANGE_BODY_LOCATION, ADD_BODY_LOCATION } from '../Actions/type'
 
 const initialState = {
     section: 1,
     subSection: 1,
+    coordinateStack: []
 }
 
 const reducer = (oldState = initialState, action) => {
@@ -25,6 +26,8 @@ const reducer = (oldState = initialState, action) => {
                 }
             }
             return {...oldState, ...action.payload}
+        case ADD_BODY_LOCATION:
+            return {...oldState, coordinateStack: [...oldState.coordinateStack, action.payload]}
         case CLEANUP_LOCATION:
                 return initialState;
             default:

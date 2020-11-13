@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import {connect} from 'react-redux';
 
-import { changeTumorDimensions, cleanupTumor } from '../../Redux/Actions/tumor'
+import { changeMarkerDimensions, cleanupMarker } from '../../Redux/Actions/dimensions'
 
 import './Marker.css'
 
@@ -14,8 +14,7 @@ class Tumor extends Component {
 
     render() {
         return (
-            <div className='Tumor'>
-                Tumor
+            <div className='Marker-Dimensions'>
                 
                 <div className='Marker-Location'>
                     <p><strong>Dimensions</strong></p>
@@ -38,15 +37,15 @@ class Tumor extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        diameter: state.tumor.diameter,
-        weight: state.tumor.weight
+        diameter: state.dimensions.diameter,
+        weight: state.dimensions.weight
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleChangeDimensions: (e) => {dispatch(changeTumorDimensions(e))},
-        cleanup: () => {dispatch(cleanupTumor())}
+        handleChangeDimensions: (e) => {dispatch(changeMarkerDimensions(e))},
+        cleanup: () => {dispatch(cleanupMarker())}
     }
 }
 

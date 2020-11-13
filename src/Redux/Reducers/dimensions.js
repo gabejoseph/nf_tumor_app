@@ -1,4 +1,4 @@
-import { CHANGE_TUMOR_DIMENSIONS, CLEANUP_TUMOR } from "../Actions/type.js";
+import { CHANGE_MARKER_DIMENSIONS, CLEANUP_MARKER_DIMENSIONS } from "../Actions/type.js";
 
 const initialState = {
     diameter: 0,
@@ -8,7 +8,7 @@ const initialState = {
 
 const reducer = (oldState = initialState, action) => {
     switch(action.type){
-        case CHANGE_TUMOR_DIMENSIONS:
+        case CHANGE_MARKER_DIMENSIONS:
             // validate section and type cast to String > Int
             if (action.payload.diameter !== undefined) {
                 if (parseInt(action.payload.diameter) < 0) {
@@ -26,7 +26,7 @@ const reducer = (oldState = initialState, action) => {
                 }
             }
             return {...oldState, ...action.payload}
-        case CLEANUP_TUMOR:
+        case CLEANUP_MARKER_DIMENSIONS:
             return initialState;
         default:
             return oldState;

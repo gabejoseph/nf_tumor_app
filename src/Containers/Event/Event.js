@@ -3,65 +3,72 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 
 import {changeEventInfo, submitEvent, cleanupEvent} from '../../Redux/Actions/event'
-import BodyLocation from '../BodyLocation/BodyLocation';
+
+import Banner from '../Banner/Banner'
+import Pain from './EventTemplates/Pain'
 
 import './Event.css'
+import TypeMenu from './TypeMenu';
+import Marker from './EventTemplates/Marker';
+
 
 class Event extends Component {
     
     componentWillUnmount(){
         this.props.cleanup();
     }
+
+    renderEvent(type){
+        switch(type){
+            case "Pain":
+                return < Pain />;
+            case "New Mark":
+                return < Marker />;
+            default:
+                return null;
+        }
+    }
     
     render() {
         return (
             <div className='Event'>
-                Event
+                < Banner />
+                Home Link and Event
                 < br />
 
                 <form className='Event-Form' id='event-submit-form' onSubmit={(e)=>this.props.handleSubmitEventType(e)}>
                
-                <div> 
+                < TypeMenu />
 
-                    <label>
-                        Event Type
-                    </label>
-                    <select name="eventType" onChange={(e)=> this.props.handleChangeEventInfo(e)}>
-                        <option value="1">Wellness</option>
-                        <option value="2">Pain</option>
-                        <option value="3">Numbness</option>
-                        <option value="4">New Mark</option>
-                    </select>
-
-                </div>
                 <br />
 
-                < BodyLocation />
+                { this.renderEvent(this.props.activeType) }              
+
+                {/* <div className='Event-Text'>Where have you experienced this?</div>
+
+                < BodyCanvas />
 
                 < br />
-                <div>  
-                    <label> Intensity </label>
-                    <select name="eventIntensity" onChange={(e)=> this.props.handleChangeEventInfo(e)}>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                        <option value={6}>6</option>
-                        <option value={7}>7</option>
-                        <option value={8}>8</option>
-                        <option value={9}>9</option>
-                        <option value={10}>10</option>
-                    </select>
-                </div>
+
+                <div className='Event-Text'>What is the intensity of the pain?</div>
+                
+                < Intensity />
+
                 < br />
+                
+                <div className='Event-Text'>How long did the pain last?</div>
+                
+                < DurationMenu />
+
+                < br />
+
                 <div className='Event-Description'> 
-                    <label> Describe your event: </label>
+                    <label> Additional notes (optional): </label>
                     < br />
                     <textarea cols='50' rows='5' name='eventDescription' value={this.props.description} onChange={(e) => this.props.handleChangeEventInfo(e)} />
-                </div>
+                </div> */}
 
-                < button type='submit' form='event-submit-form' value='submit'>Submit</button>
+                < button type='submit' form='event-submit-form' value='submit'>Submit Log</button>
 
                 </form>
             </div>
@@ -71,6 +78,7 @@ class Event extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        activeType: state.event.eventType,
         description: state.event.eventDescription
     }
 }
